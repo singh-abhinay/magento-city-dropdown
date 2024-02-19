@@ -1,0 +1,20 @@
+type Query {
+    citylist(
+        filter: CityListFilterInput @doc(description: "Identifies which colomns to search for and return.")
+    ): CityData @resolver(class: "Eadesigndev\\RomCity\\Model\\Resolver\\CityGraphql") @doc(description: "The city query returns a list of all cities belonging to a specific region(filter)")
+}
+
+input CityListFilterInput @doc(description: "CityListFilterInput defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.") {
+    region_id:FilterTypeInput @doc(description: "The region id for select specific region")
+}
+
+type CityData @doc(description: "The City Data  is the top-level object returned in a city search") {
+    total_count: Int @doc(description: "Total count")
+    cityList: [CityList]
+}
+
+type CityList @doc(description: "The City object is the top-level object returned in a city search") {
+    id: Int @doc(description: "ID of the city")
+    region_id:Int @doc(description: "Region ID region_id")
+    city: String @doc(description: "City name of the region")
+}

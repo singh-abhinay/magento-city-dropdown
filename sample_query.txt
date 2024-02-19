@@ -1,0 +1,12 @@
+{
+  citylist(filter: {
+    region_id: {eq: "278"}
+  }) {
+    cityList {
+      city
+      id
+      region_id
+    }
+    total_count
+  }
+}
